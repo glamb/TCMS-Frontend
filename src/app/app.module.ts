@@ -1,14 +1,18 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule }  from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { MdToolbarModule } from '@angular2-material/toolbar';
 import { MdCardModule } from '@angular2-material/card';
 import { MdButtonModule } from '@angular2-material/button';
+import { MdTabsModule } from '@angular2-material/tabs';
+import { MdInputModule } from '@angular2-material/input';
+import { ModalModule } from 'ng2-modal';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ApiService } from './shared';
+import { ProjectService } from './services/project.service';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -17,18 +21,23 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
   imports: [
     BrowserModule,
     HttpModule,
+    JsonpModule,
     FormsModule,
     routing,
+    ModalModule,
     MdToolbarModule.forRoot(),
     MdCardModule.forRoot(),
-    MdButtonModule.forRoot()
+    MdButtonModule.forRoot(),
+    MdTabsModule.forRoot(),
+    MdInputModule.forRoot()
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
   ],
   providers: [
-    ApiService
+    ApiService,
+    ProjectService
   ],
   bootstrap: [AppComponent]
 })

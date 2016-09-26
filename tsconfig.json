@@ -12,5 +12,6 @@
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,
     "useWebpackText": true
-  }
+  },
+  "typeRoots": [ "../node_modules/@types" ]
 }

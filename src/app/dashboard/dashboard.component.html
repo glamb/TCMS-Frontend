@@ -1,5 +1,16 @@
 <div class="dash-content">
-  <button md-button id="create-proj">+ Create Project</button>
+  <button md-button id="create-proj" (click)="createModal.open()">+ Create Project</button>
+  <modal #createModal title="Create Project" [hideCloseButton]="true" modalClass="modal-sm">
+    <modal-content>
+      <md-input #newProjName style="width: 100%" placeholder="Name:" align="front" value="Hello"></md-input>
+      <md-input #newProjDesc style="width: 100%" placeholder="Description:" align="front"></md-input>
+      <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+    </modal-content>
+    <modal-footer>
+        <button type="submit" md-raised-button color="primary" style="align:right;" class="btn btn-primary" (click)="addProject(newProjName.value, newProjDesc.value); createModal.close()" >Save!</button>
+        <button md-button style="align:right;" class="btn btn-primary" (click)="createModal.close()">Cancel!</button>
+    </modal-footer>
+</modal>
   <a href=#>
     <md-card class="dash-card">
       <img src="smiley.gif" alt="Smiley face">
