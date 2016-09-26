@@ -1,0 +1,45 @@
+// component styles are encapsulated and only applied to their components
+
+.dash-card {
+  margin: 5px;
+  height: 100px;
+  position: relative;
+}
+
+img {
+  float: left;
+  height: 100px;
+  width: 100px;
+}
+
+h3 {
+  margin: 0;
+}
+
+p {
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a :hover {
+  background: #f2efef;
+}
+
+.dash-content {
+  position: relative;
+}
+
+#create-proj {
+  position: relative;
+  float: right;
+  margin-top: -50px;
+  color: #000;
+}
+
+.proj-content {
+  text-align: left;
+  margin: 0 105px;
+}
