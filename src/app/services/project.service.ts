@@ -25,6 +25,16 @@ export class ProjectService {
       .map(this.extractData);
   }
 
+  update(name: string, desc: string, id: string): Observable<Project> {
+    const selProjectUrl = `${this.projectsUrl}/${id}`;
+    console.log(selProjectUrl);
+    let body = JSON.stringify({name: name, description: desc});
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this.http.put(selProjectUrl, body, options)
+      .map(this.extractData);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || [{ }];
