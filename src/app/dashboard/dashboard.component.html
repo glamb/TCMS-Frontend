@@ -17,11 +17,10 @@
         Active
       </template>
       <template md-tab-content>
-        <div *ngFor="let project of projects">
-         <a href=#
+        <div class="hover" *ngFor="let project of projects">
+          <md-card class="dash-card" *ngIf="project.status==='Active'"
           [class.selected]= "project === selectedProject"
           (click)="onSelectProject(project)">
-          <md-card class="dash-card" *ngIf="project.status==='Active'">
             <div style="float:right;">
               <button md-raised-button color="primary" (click)="editProject()">Edit</button>
               <button md-raised-button color="warn" (click)="deleteProject()">Delete</button>
@@ -37,7 +36,6 @@
               <span>Tests: 0</span>
             </div>
           </md-card>
-          </a>
         </div>
       </template>
     </md-tab>
@@ -46,13 +44,11 @@
         Archived
       </template>
       <template md-tab-content>
-        <div *ngFor="let project of projects">
-         <a href=#
+        <div class="hover" *ngFor="let project of projects">
+          <md-card class="dash-card" *ngIf="project.status==='Archived'"
           [class.selected]= "project === selectedProject"
           (click)="onSelectProject(project)">
-          <md-card class="dash-card" *ngIf="project.status==='Archived'">
             <div style="float:right;">
-              <button md-raised-button color="primary" (click)="editProject()">Edit</button>
               <button md-raised-button color="warn" (click)="deleteProject()">Delete</button>
               <button md-raised-button color="accent" (click)="archiveProjects()">Activate</button>
             </div>
@@ -66,7 +62,6 @@
               <span>Tests: 0</span>
             </div>
           </md-card>
-          </a>
         </div>
       </template>
     </md-tab>
