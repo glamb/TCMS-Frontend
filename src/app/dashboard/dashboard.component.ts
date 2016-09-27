@@ -32,6 +32,10 @@ export class DashboardComponent implements OnInit {
         error =>  this.errorMessage = <any>error);
   }
 
+  refresh() {
+    this.getProjects();
+  }
+
   ngOnInit() {
     this.getProjects();
   }

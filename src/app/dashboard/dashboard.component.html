@@ -1,6 +1,6 @@
 <div class="dash-content">
   <button md-button id="create-proj" (click)="createModal.open()">+ Create Project</button>
-  <modal #createModal title="Create Project" [hideCloseButton]="true" modalClass="modal-sm">
+  <modal #createModal title="Create Project" [hideCloseButton]="true">
     <modal-content>
       <md-input #newProjName style="width: 100%" placeholder="Name:" align="front" value=""></md-input>
       <md-input #newProjDesc style="width: 100%" placeholder="Description:" align="front"></md-input>
@@ -10,18 +10,57 @@
         <button type="submit" md-raised-button color="primary" style="align:right;" class="btn btn-primary" (click)="addProject(newProjName.value, newProjDesc.value); createModal.close()" >Save</button>
         <button md-button style="align:right;" class="btn btn-primary" (click)="createModal.close()">Cancel</button>
     </modal-footer>
-</modal>
- <a href=# *ngFor="let project of projects">
-  <md-card class="dash-card">
-    <img src="smiley.gif" alt="Smiley face">
-    <div class="proj-content">
-      <h3>{{ project.name }}</h3>
-      <p>{{ project.description }}</p>
-    </div>
-    <div>
-      <span>Suites: 43</span>
-      <span>Tests: 128</span>
-    </div>
-  </md-card>
- </a>
+  </modal>
+  <md-tab-group>
+    <md-tab>
+      <template md-tab-label>
+        Active
+      </template>
+      <template md-tab-content>
+        <div *ngFor="let project of projects">
+          <md-card class="dash-card" *ngIf="project.status==='Active'">
+            <div style="float:right;">
+              <button md-raised-button color="primary" (click)="editProject()">Edit</button>
+              <button md-raised-button color="warn" (click)="deleteProject()">Delete</button>
+              <button md-raised-button color="accent" (click)="archiveProjects()">Archived</button>
+            </div>
+            <img src="smiley.gif" alt="Smiley face">
+            <div class="proj-content">
+              <h3>{{ project.name }}</h3>
+              <p>{{ project.description }}</p>
+            </div>
+            <div>
+              <span>Suites: 0</span>
+              <span>Tests: 0</span>
+            </div>
+          </md-card>
+        </div>
+      </template>
+    </md-tab>
+    <md-tab>
+      <template md-tab-label>
+        Archived
+      </template>
+      <template md-tab-content>
+        <div *ngFor="let project of projects">
+          <md-card class="dash-card" *ngIf="project.status==='Archived'">
+            <div style="float:right;">
+              <button md-raised-button color="primary" (click)="editProject()">Edit</button>
+              <button md-raised-button color="warn" (click)="deleteProject()">Delete</button>
+              <button md-raised-button color="accent" (click)="archiveProjects()">Activate</button>
+            </div>
+            <img src="smiley.gif" alt="Smiley face">
+            <div class="proj-content">
+              <h3>{{ project.name }}</h3>
+              <p>{{ project.description }}</p>
+            </div>
+            <div>
+              <span>Suites: 0</span>
+              <span>Tests: 0</span>
+            </div>
+          </md-card>
+        </div>
+      </template>
+    </md-tab>
+  </md-tab-group>
 </div>

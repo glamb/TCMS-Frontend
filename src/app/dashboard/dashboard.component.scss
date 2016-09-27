@@ -40,11 +40,21 @@ a :hover {
 }
 
 .proj-content {
+  position: relative;
   text-align: left;
+  width: 945px;
   margin: 0 105px;
+
 }
 
-.custom-modal {
+.modal-custom {
+  padding: 50px;
+}
+
+.dot-menu:after {
+  content: '\2807';
+  font-size: 30px;
   color: #000;
-  text-align: left;
+  float: right;
+  text-decoration: none;
 }
