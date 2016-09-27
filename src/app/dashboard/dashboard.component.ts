@@ -12,6 +12,8 @@ import { ProjectService }         from '../services/project.service';
 export class DashboardComponent implements OnInit {
   projects: Project[];
   errorMessage: string;
+  selectedProject: Project;
+
 
   constructor(
     private projectService: ProjectService) { }
@@ -30,6 +32,23 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         projects => this.projects = projects,
         error =>  this.errorMessage = <any>error);
+  }
+
+
+ onSelectProject(project: Project) {
+    this.selectedProject = project;
+    console.log('selectedProject: ' + this.selectedProject._id);
+    console.log('my project: ' + project._id);
+  }
+
+  updateProject(name: string, desc: string, id: string) {
+    if (!name) { return; }
+    console.log(id)
+    this.projectService.update(name, desc, id)
+      .subscribe(
+        project => this.projects.unshift(project),
+        error => this.errorMessage = <any>error
+      );
   }
 
   ngOnInit() {
