@@ -7,7 +7,6 @@ import { MdCardModule } from '@angular2-material/card';
 import { MdButtonModule } from '@angular2-material/button';
 import { MdTabsModule } from '@angular2-material/tabs';
 import { MdInputModule } from '@angular2-material/input';
-import { MdMenuModule } from '@angular2-material/menu';
 import { MdIconModule } from '@angular2-material/icon';
 import { ModalModule } from 'ng2-modal';
 
@@ -32,7 +31,6 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     MdButtonModule.forRoot(),
     MdTabsModule.forRoot(),
     MdInputModule.forRoot(),
-    MdMenuModule.forRoot(),
     MdIconModule.forRoot()
   ],
   declarations: [
