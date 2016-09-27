@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
     if (!name) { return; }
     this.projectService.create(name, desc)
       .subscribe(
-        project => this.projects.push(project),
+        project => this.projects.unshift(project),
         error => this.errorMessage = <any>error
       );
   }
