@@ -39,7 +39,7 @@ $ npm install
 # start the server
 $ npm start
 ```
-go to [http://localhost:8080](http://localhost:8080) in your browser.
+go to [http://localhost:3001](http://localhost:3001) in your browser.
 
 # Table of Contents
 
@@ -74,7 +74,7 @@ After you have installed all dependencies you can now start developing with:
 
 * `npm start`
 
-It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The application can be checked at `http://localhost:8080`.
+It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The application can be checked at `http://localhost:3001`.
 
 As an alternative, you can work using Hot Module Replacement (HMR):
 
