@@ -11,6 +11,24 @@
         <button md-button style="align:right;" class="btn btn-primary" (click)="createModal.close()">Cancel</button>
     </modal-footer>
   </modal>
+  <div *ngIf="selectedProject">
+   <h2>{{selectedProject.name}} details!</h2>
+<!--    <div>
+    <label>name: </label>{{selectedProject.name}}
+   </div>
+ -->   
+   <div>
+    <label>status: </label>{{selectedProject.status}}
+   </div>
+   <div>
+    <label>id: </label>{{selectedProject._id}}
+   </div>
+<!--    <div>
+    <label>name: </label>
+    <input [(ngModel)]="selectedProject.name" placeholder="name"/>
+   </div>
+ -->
+  </div>
   <md-tab-group>
     <md-tab>
       <template md-tab-label>
@@ -66,14 +84,4 @@
       </template>
     </md-tab>
   </md-tab-group>
- <div *ngIf="selectedProject">
-  <h2>{{selectedProject.name}} details!</h2>
-  <div>
-    <label>id: </label>{{selectedProject._id}}
-  </div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="selectedProject.name" placeholder="name"/>
-  </div>
- </div>
 </div>
