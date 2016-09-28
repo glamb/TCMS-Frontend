@@ -17,18 +17,18 @@ export class ProjectService {
       .map(this.extractData);
   }
 
-  create(name: string, desc: string): Observable<Project> {
-    let body = JSON.stringify({name: name, description: desc});
+  create(project): Observable<Project> {
+    let body = JSON.stringify(project);
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.post(this.projectsUrl, body, options)
       .map(this.extractData);
   }
 
-  update(name: string, desc: string, id: string): Observable<Project> {
+  update(project, id): Observable<Project> {
     const selProjectUrl = `${this.projectsUrl}/${id}`;
     console.log(selProjectUrl);
-    let body = JSON.stringify({name: name, description: desc});
+    let body = JSON.stringify(project);
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.put(selProjectUrl, body, options)

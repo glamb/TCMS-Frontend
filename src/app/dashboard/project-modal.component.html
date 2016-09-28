@@ -1,0 +1,31 @@
+<div *ngIf="modalVisible" class="modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" *ngIf="project">
+            <md-toolbar color="primary">
+              Edit Project
+            </md-toolbar>
+            <div class="modal-body">
+              <md-input #newProjName style="width: 100%" placeholder="Name:" align="front"
+              [value]="project.name"></md-input>
+              <md-input #newProjDesc style="width: 100%" placeholder="Description:" align="front"
+              [value]="project.description"></md-input>
+              <button type="submit" md-raised-button color="primary" class="btn btn-primary"
+                (click)="request(); hideProjModal()">Save</button>
+              <button type="cancel" md-button class="btn btn-primary" (click)="hideProjModal()">Cancel</button>
+            </div>
+        </div>
+        <div class="modal-content" *ngIf="!project">
+            <md-toolbar color="primary">
+              Create Project
+            </md-toolbar>
+            <div class="modal-body">
+            <form (ngSubmit)="request(nProject); hideProjModal()" #nProject="ngForm">
+              <md-input ngModel name="name" style="width: 100%" placeholder="Name:" align="front" value="" required #name="ngModel"></md-input>
+              <md-input ngModel name="description" style="width: 100%" placeholder="Description:" align="front" value="" #description="ngModel"></md-input>
+              <button type="submit" md-raised-button color="primary" class="btn btn-primary">Save</button>
+              <button type="button" md-button class="btn btn-primary" (click)="hideProjModal()">Cancel</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
