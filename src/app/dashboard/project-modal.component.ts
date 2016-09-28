@@ -16,6 +16,7 @@ export class ProjectModelComponent {
   tmpProject: any = {};
 
   showProjModal(project?: Project) {
+    console.log("showProjModal: " + project.name);
     if (project) {
       this.project = project;
     } else {
@@ -30,6 +31,7 @@ export class ProjectModelComponent {
   }
 
   request(nProject: NgForm) {
+    console.log("request: " + nProject.name);
     this.projectRequest.emit(nProject.value);
   }
 }

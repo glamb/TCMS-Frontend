@@ -5,6 +5,7 @@
               Edit Project
             </md-toolbar>
             <div class="modal-body">
+            <form (ngSubmit)="request(nProject); hideProjModal()" #nProject="ngForm">
               <md-input #newProjName style="width: 100%" placeholder="Name:" align="front"
               [value]="project.name"></md-input>
               <md-input #newProjDesc style="width: 100%" placeholder="Description:" align="front"
@@ -12,6 +13,7 @@
               <button type="submit" md-raised-button color="primary" class="btn btn-primary"
                 (click)="request(); hideProjModal()">Save</button>
               <button type="cancel" md-button class="btn btn-primary" (click)="hideProjModal()">Cancel</button>
+            </form>
             </div>
         </div>
         <div class="modal-content" *ngIf="!project">
