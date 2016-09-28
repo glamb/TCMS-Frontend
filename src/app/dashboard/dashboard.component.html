@@ -26,7 +26,6 @@
       </template>
       <template md-tab-content>
         <div class="hover" *ngFor="let project of projects">
-<<<<<<< HEAD
           <md-card class="dash-card" *ngIf="project.status==='Active'"
           [class.selected]= "project === selectedProject"
           (click)="onSelectProject(project)">
