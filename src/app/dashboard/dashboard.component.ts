@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Project }                from '../models/project.model';
 import { ProjectService }         from '../services/project.service';
+import { ProjectModelComponent }  from './project-modal.component';
 
 @Component({
   selector: 'tcms-dash',
@@ -10,6 +11,7 @@ import { ProjectService }         from '../services/project.service';
   providers: [ ProjectService ]
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild(ProjectModelComponent) projectModal: ProjectModelComponent;
   projects: Project[];
   errorMessage: string;
   selectedProject: Project;
@@ -18,9 +20,9 @@ export class DashboardComponent implements OnInit {
   constructor(
     private projectService: ProjectService) { }
 
-  addProject(name: string, desc: string) {
-    if (!name) { return; }
-    this.projectService.create(name, desc)
+  addProject(updatedProject) {
+    if (!updatedProject) { return; }
+    this.projectService.create(updatedProject)
       .subscribe(
         project => this.projects.unshift(project),
         error => this.errorMessage = <any>error
@@ -37,18 +39,22 @@ export class DashboardComponent implements OnInit {
 
  onSelectProject(project: Project) {
     this.selectedProject = project;
-    console.log('selectedProject: ' + this.selectedProject._id);
-    console.log('my project: ' + project._id);
   }
 
-  updateProject(name: string, desc: string, id: string) {
-    if (!name) { return; }
-    console.log(id)
-    this.projectService.update(name, desc, id)
-      .subscribe(
-        project => this.projects.unshift(project),
-        error => this.errorMessage = <any>error
-      );
+  updateProject(project: Project, id: string) {
+    // TODO Update Project
+  }
+
+  showModal(project?: Project) {
+    if (project) {
+      this.projectModal.showProjModal(project);
+    } else {
+      this.projectModal.showProjModal();
+    }
+  }
+
+  hideModal() {
+    this.projectModal.hideProjModal();
   }
 
   ngOnInit() {

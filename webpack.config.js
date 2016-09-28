@@ -35,7 +35,7 @@ module.exports = function makeWebpackConfig() {
    */
   if (isProd) {
     config.devtool = 'source-map';
-  } 
+  }
   else if (isTest) {
     config.devtool = 'inline-source-map';
   }
@@ -62,7 +62,7 @@ module.exports = function makeWebpackConfig() {
    */
   config.output = isTest ? {} : {
     path: root('dist'),
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    publicPath: isProd ? '/' : 'http://localhost:3001/',
     filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
     chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
   };
