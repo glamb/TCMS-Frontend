@@ -26,24 +26,26 @@
       </template>
       <template md-tab-content>
         <div class="hover" *ngFor="let project of projects">
-          <md-card class="dash-card" *ngIf="project.status==='Active'"
-          [class.selected]= "project === selectedProject"
-          (click)="onSelectProject(project)">
-            <div style="float:right;">
-              <button md-raised-button color="primary" (click)="onSelectProject(project); showModal(project)">Edit</button>
-              <button md-raised-button color="warn" (click)="deleteProject()">Delete</button>
-              <button md-raised-button color="accent" (click)="archiveProjects()">Archive</button>
-            </div>
-            <img src="smiley.gif" alt="Smiley face">
-            <div class="proj-content">
-              <h3>{{ project.name }}</h3>
-              <p>{{ project.description }}</p>
-            </div>
-            <div>
-              <span>Suites: 0</span>
-              <span>Tests: 0</span>
-            </div>
-          </md-card>
+            <md-card class="dash-card" *ngIf="project.status==='Active'"
+            [class.selected]= "project === selectedProject"
+            (click)="onSelectProject(project)">
+              <div style="float:right;">
+                <button md-raised-button color="primary" (click)="onSelectProject(project); showModal(project)">Edit</button>
+                <button md-raised-button color="warn" (click)="deleteProject()">Delete</button>
+                <button md-raised-button color="accent" (click)="archiveProjects()">Archive</button>
+              </div>
+              <a [routerLink]="['projects', project._id]">
+                <img src="smiley.gif" alt="Smiley face">
+                <div class="proj-content">
+                  <h3>{{ project.name }}</h3>
+                  <p>{{ project.description }}</p>
+                </div>
+                <div>
+                  <span>Suites: 0</span>
+                  <span>Tests: 0</span>
+                </div>
+              </a>
+            </md-card>
         </div>
         <tcms-proj-modal (projectRequest)="updateProject($event)"></tcms-proj-modal>
       </template>
