@@ -20,9 +20,9 @@ export class DashboardComponent implements OnInit {
   constructor(
     private projectService: ProjectService) { }
 
-  addProject(updatedProject) {
-    if (!updatedProject) { return; }
-    this.projectService.create(updatedProject)
+  addProject(newProject) {
+    if (!newProject) { return; }
+    this.projectService.create(newProject)
       .subscribe(
         project => this.projects.unshift(project),
         error => this.errorMessage = <any>error
@@ -41,8 +41,34 @@ export class DashboardComponent implements OnInit {
     this.selectedProject = project;
   }
 
-  updateProject(project: Project, id: string) {
+//  updateProject(project: Project, id: string) {
+  updateProject(updProject) {
     // TODO Update Project
+    console.log("updateProject: " + updProject);
+    if (!updProject) { return; }
+    this.projectService.update(updProject, this.selectedProject._id)
+      .subscribe(
+        project => this.projects.unshift(project),
+        error => this.errorMessage = <any>error
+      );
+  }
+
+  updateOrCreate(newProj) {
+    if (newProj._id) {
+      console.info('updated');
+      this.projectService.update(newProj, this.selectedProject._id)
+        .subscribe(
+          project => this.getProjects(),
+          error => this.errorMessage = <any>error
+        );
+    } else {
+      console.info('created');
+      this.projectService.create(newProj)
+        .subscribe(
+          project => this.projects.unshift(project),
+          error => this.errorMessage = <any>error
+        );
+    }
   }
 
   showModal(project?: Project) {

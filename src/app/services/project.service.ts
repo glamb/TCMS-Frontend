@@ -8,7 +8,7 @@ import { Project } from '../models/project.model';
 export class ProjectService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private projectsUrl = 'http://localhost:3000/api/projects/  ';  // URL to web api
+  private projectsUrl = 'http://localhost:3000/api/projects';  // URL to web api
 
   constructor(private http: Http) { }
 
@@ -26,6 +26,7 @@ export class ProjectService {
   }
 
   update(project, id): Observable<Project> {
+    console.info('id: '+id);
     const selProjectUrl = `${this.projectsUrl}/${id}`;
     console.log(selProjectUrl);
     let body = JSON.stringify(project);

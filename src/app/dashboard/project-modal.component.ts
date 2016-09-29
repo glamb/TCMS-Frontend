@@ -30,6 +30,9 @@ export class ProjectModelComponent {
   }
 
   request(nProject: NgForm) {
+    if (this.project) {
+      nProject.value._id = this.project._id;
+    }
     this.projectRequest.emit(nProject.value);
   }
 }
