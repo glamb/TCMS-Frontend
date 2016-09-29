@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
       console.info('updated');
       this.projectService.update(newProj, this.selectedProject._id)
         .subscribe(
-          project => this.projects.unshift(project),
+          project => this.getProjects(),
           error => this.errorMessage = <any>error
         );
     } else {
