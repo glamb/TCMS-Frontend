@@ -17,19 +17,19 @@ export class ProjectService {
       .map(this.extractData);
   }
 
-  create(project): Observable<Project> {
-    let body = JSON.stringify(project);
+  create(projectPayload): Observable<Project> {
+    let body = JSON.stringify(projectPayload);
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.post(this.projectsUrl, body, options)
       .map(this.extractData);
   }
 
-  update(project, id): Observable<Project> {
+  update(projectPayload, id): Observable<Project> {
     console.info('id: '+id);
     const selProjectUrl = `${this.projectsUrl}/${id}`;
     console.log(selProjectUrl);
-    let body = JSON.stringify(project);
+    let body = JSON.stringify(projectPayload);
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.put(selProjectUrl, body, options)
