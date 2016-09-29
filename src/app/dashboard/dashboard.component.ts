@@ -40,13 +40,22 @@ export class DashboardComponent implements OnInit {
         error =>  this.errorMessage = <any>error);
   }
 
+  changeProjectStatus(projState: string) {
+    const projPayload = {status: projState};
+//    console.log ("changeProjecStatus: ", projPayload, this.selectedProject._id)
+    this.projectService.update(projPayload, this.selectedProject._id)
+      .subscribe(
+        project => this.getProjects(),
+        error => this.errorMessage = <any>error
+      );
+  }
 
- onSelectProject(project: Project) {
+  onSelectProject(project: Project) {
     this.selectedProject = project;
   }
 
 //  updateProject(project: Project, id: string) {
-  updateProject(updProject) {
+/*  updateProject(updProject) {
     // TODO Update Project
     console.log("updateProject: " + updProject);
     if (!updProject) { return; }
@@ -56,17 +65,17 @@ export class DashboardComponent implements OnInit {
         error => this.errorMessage = <any>error
       );
   }
-
+*/
   updateOrCreate(newProj) {
     if (newProj._id) {
-      console.info('updated');
+      // update project
       this.projectService.update(newProj, this.selectedProject._id)
         .subscribe(
           project => this.getProjects(),
           error => this.errorMessage = <any>error
         );
     } else {
-      console.info('created');
+      // new project
       this.projectService.create(newProj)
         .subscribe(
           project => this.projects.unshift(project),
