@@ -1,1 +1,9 @@
-<p>Project Page</p>
+<div *ngIf="project">
+   <h2>{{project.name}} details!</h2>
+   <div>
+    <label>status: </label>{{project.status}}
+   </div>
+   <div>
+    <label>id: </label>{{project._id}}
+   </div>
+  </div>

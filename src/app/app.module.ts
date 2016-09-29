@@ -12,7 +12,7 @@ import { ModalModule } from 'ng2-modal';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProjectModelComponent } from './dashboard/project-modal.component';
+import { ProjectModalComponent } from './dashboard/project-modal.component';
 import { ProjectComponent } from './project/project.component';
 import { ApiService } from './shared';
 import { ProjectService } from './services/project.service';
@@ -38,7 +38,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
   declarations: [
     AppComponent,
     DashboardComponent,
-    ProjectModelComponent,
+    ProjectModalComponent,
     ProjectComponent
   ],
   providers: [

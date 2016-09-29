@@ -12,6 +12,6 @@ import '../style/app.scss';
 export class AppComponent {
 
   constructor(private api: ApiService) {
-    // Do something with api
+    api.title = 'Dashboard';
   }
 }
