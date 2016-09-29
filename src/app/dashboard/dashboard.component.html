@@ -31,7 +31,7 @@
           (click)="onSelectProject(project)">
             <div style="float:right;">
               <button md-raised-button color="primary" (click)="onSelectProject(project); showModal(project)">Edit</button>
-              <button md-raised-button color="warn" (click)="deleteProject()">Delete</button>
+              <button md-raised-button color="warn" (click)="onSelectProject(project); deleteProject()">Delete</button>
               <button md-raised-button color="accent" (click)="onSelectProject(project); changeProjectStatus('Archived')">Archive</button>
             </div>
             <a [routerLink]="['projects', project._id]">
@@ -60,7 +60,7 @@
           [class.selected]= "project === selectedProject"
           (click)="onSelectProject(project)">
             <div style="float:right;">
-              <button md-raised-button color="warn" (click)="deleteProject()">Delete</button>
+              <button md-raised-button color="warn" (click)="onSelectProject(project); deleteProject()">Delete</button>
               <button md-raised-button color="accent" (click)="onSelectProject(project); changeProjectStatus('Active')">Activate</button>
             </div>
             <img id="proj-image" src="http://loremflickr.com/320/240/brazil,rio,paris" alt="loremflickr.com image">
