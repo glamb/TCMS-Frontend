@@ -1,6 +1,6 @@
 <div class="dash-content">
   <button md-button id="create-proj" (click)="showModal()">+ Create Project</button>
-  <tcms-proj-modal (projectRequest)="addProject($event)"></tcms-proj-modal>
+  <tcms-proj-modal (projectRequest)="updateOrCreate($event)"></tcms-proj-modal>
   <div *ngIf="selectedProject">
    <h2>{{selectedProject.name}} details!</h2>
 <!--    <div>
@@ -45,7 +45,7 @@
             </div>
           </md-card>
         </div>
-        <tcms-proj-modal (projectRequest)="updateProject($event)"></tcms-proj-modal>
+        <tcms-proj-modal (projectRequest)="updateOrCreate($event)"></tcms-proj-modal>
       </template>
     </md-tab>
     <md-tab>

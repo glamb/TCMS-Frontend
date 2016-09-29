@@ -46,11 +46,29 @@ export class DashboardComponent implements OnInit {
     // TODO Update Project
     console.log("updateProject: " + updProject);
     if (!updProject) { return; }
-    this.projectService.update(updProject)
+    this.projectService.update(updProject, this.selectedProject._id)
       .subscribe(
         project => this.projects.unshift(project),
         error => this.errorMessage = <any>error
       );
+  }
+
+  updateOrCreate(newProj) {
+    if (newProj._id) {
+      console.info('updated');
+      this.projectService.update(newProj, this.selectedProject._id)
+        .subscribe(
+          project => this.projects.unshift(project),
+          error => this.errorMessage = <any>error
+        );
+    } else {
+      console.info('created');
+      this.projectService.create(newProj)
+        .subscribe(
+          project => this.projects.unshift(project),
+          error => this.errorMessage = <any>error
+        );
+    }
   }
 
   showModal(project?: Project) {
