@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+// import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Project }  from '../models/project.model';
 
@@ -21,7 +22,7 @@ export class ProjectModelComponent {
     } else {
       this.project = undefined;
     }
-    console.info(this.project);
+//    console.info(this.project);
     this.modalVisible = true;
   }
 
