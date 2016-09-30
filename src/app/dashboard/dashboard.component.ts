@@ -85,6 +85,8 @@ export class DashboardComponent implements OnInit {
         );
     } else {
       // new project
+      newProj.img_id = Math.floor(Math.random() * 1084 + 1); // generate from 1 to 1084 inclusive
+      //newProj.img_id = Math.floor(Math.random() * (max-min+1)+min);
       this.projectService.create(newProj)
         .subscribe(
           project => this.projects.unshift(project),

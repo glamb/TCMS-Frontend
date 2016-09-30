@@ -17,7 +17,7 @@
               <button md-raised-button color="accent" (click)="onSelectProject(project); changeProjectStatus('Archived')">Archive</button>
             </div>
             <a [routerLink]="['projects', project._id]">
-              <img id="proj-image" src="https://unsplash.it/200/200?image=1084" alt="Project image">
+              <img id="proj-image" src="https://unsplash.it/200/200?image={{ project.img_id }}" alt="Project image">
               <div class="proj-content">
                 <h3>{{ project.name }}</h3>
                 <p>{{ project.description }}</p>
@@ -45,7 +45,7 @@
               <button md-raised-button color="warn" (click)="onSelectProject(project); deleteProject()">Delete</button>
               <button md-raised-button color="accent" (click)="onSelectProject(project); changeProjectStatus('Active')">Activate</button>
             </div>
-            <img id="proj-image" src="https://unsplash.it/200/200?image=1084" alt="Project image">
+            <img id="proj-image" src="https://unsplash.it/200/200?image={{ project.img_id }}" alt="Project image">
             <div class="proj-content">
               <h3>{{ project.name }}</h3>
               <p>{{ project.description }}</p>
