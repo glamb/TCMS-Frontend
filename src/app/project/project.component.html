@@ -6,9 +6,28 @@
     <div>
       <label>id: </label>{{project._id}}
     </div>
-    <div *ngIf="suites">
-      <div *ngFor="let suite of suites">
-        <p>{{ suite.name }}</p>
-      </div>
-    </div>
+    <md-tab-group>
+      <md-tab>
+        <template md-tab-label>
+          Suites
+        </template>
+        <template md-tab-content>
+          <tcms-suites [project]="project"></tcms-suites>
+        </template>
+      </md-tab>
+      <md-tab>
+        <template md-tab-label>
+          Runs
+        </template>
+        <template md-tab-content>
+        </template>
+      </md-tab>
+      <md-tab>
+        <template md-tab-label>
+          Reports
+        </template>
+        <template md-tab-content>
+        </template>
+      </md-tab>
+    </md-tab-group>
 </div>

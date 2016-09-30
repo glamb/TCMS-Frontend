@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Project }                from '../models/project.model';
-import { Suite }                from '../models/suite.model';
-import { ProjectService }         from '../services/project.service';
-import { SuiteService }         from '../services/suite.service';
+import { Project } from '../models/project.model';
+import { Suite } from '../models/suite.model';
+import { ProjectService } from '../services/project.service';
+import { SuiteService } from '../services/suite.service';
 import { ApiService } from '../shared';
 
 @Component({
@@ -18,6 +18,7 @@ export class ProjectComponent implements OnInit {
   suites: Suite[];
   project: Project;
   errorMessage: string;
+  strSuites: string;
 
   constructor(
     private projectService: ProjectService,
@@ -32,16 +33,7 @@ export class ProjectComponent implements OnInit {
         project => {
           this.project = project
           this.api.title = project.name;
-          this.getSuites(project._id);
         }
-      );
-  }
-
-  getSuites(projId) {
-    console.info(projId);
-    this.suiteService.getSuites(projId)
-      .subscribe(
-        suites => this.suites = suites,
       );
   }
 

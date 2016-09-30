@@ -1,0 +1,12 @@
+<div style="margin-left: 25px;">
+  <md-card class="suite-card">
+    <form (ngSubmit)="updateOrCreate(nTest.value);" #nTest="ngForm">
+      <md-input autocomplete="off" ngModel name="name" placeholder="+ Add Test Case" style="width: 100%" required #name="ngModel" [(ngModel)]="tmpName"></md-input>
+    </form>
+  </md-card>
+  <md-list *ngIf="tests">
+    <md-list-item *ngFor="let test of tests">
+      <md-icon>label</md-icon> {{ test.name }}
+    </md-list-item>
+  </md-list>
+</div>

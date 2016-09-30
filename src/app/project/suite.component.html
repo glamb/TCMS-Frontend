@@ -1,0 +1,28 @@
+<div id="suite-view">
+  <md-card class="suite-card">
+    <form (ngSubmit)="updateOrCreate(nSuite.value);" #nSuite="ngForm">
+      <md-input autocomplete="off" ngModel name="name" placeholder="+ Add Suite" style="width: 100%" required #name="ngModel" [(ngModel)]="tmpName"></md-input>
+    </form>
+  </md-card>
+  <md-card>
+    <div *ngFor="let suite of suites">
+      <div *ngIf="!input"
+        class="suite-card"
+        [class.selected]= "suite === selectedSuite"
+        (click)="onSelectSuite(suite)">
+        <div (click)="toggleTests()">
+          <p (dblclick)="inputSwitch()" >
+            <md-icon *ngIf="!showTests">visibility</md-icon>
+            <md-icon *ngIf="showTests">visibility_off</md-icon>
+            {{ suite.name }}
+          </p>
+        </div>
+        <hr />
+        <tcms-test *ngIf="showTests" [project]="project" [suite]="suite"></tcms-test>
+      </div>
+      <div *ngIf="input" class="suite-card">
+        <md-input (keyup.enter)="inputSwitch()" [(ngModel)]="suite.name" style="width: 100%" [ngModel]="suite.name"></md-input>
+      </div>
+    </div>
+  </md-card>
+</div>
