@@ -9,7 +9,7 @@ import { Project }  from '../models/project.model';
   styleUrls: ['./project-modal.component.scss']
 })
 
-export class ProjectModelComponent {
+export class ProjectModalComponent {
   @Output() projectRequest = new EventEmitter<any>();
   project: Project;
   modalVisible: boolean;

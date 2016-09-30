@@ -1,46 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/toPromise';
 
-import { Project } from '../models/project.model';
+import { Suite } from '../models/suite.model';
 
 @Injectable()
-export class ProjectService {
+export class SuiteService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private projectsUrl = 'http://localhost:3000/api/projects';  // URL to web api
 
   constructor(private http: Http) { }
 
-  getProjects(): Observable<Project[]> {
-    return this.http.get(this.projectsUrl)
+  getSuites(projId:string): Observable<Suite[]> {
+    console.info(`${this.projectsUrl}/${projId}/suites`);
+    return this.http.get(`${this.projectsUrl}/${projId}/suites`)
       .map(this.extractData);
   }
 
-  getProject(id): Observable<Project> {
-    return this.http.get(`${this.projectsUrl}/${id}`)
+  getSuite(projId: string, suiteId: string): Observable<Suite> {
+    return this.http.get(`${this.projectsUrl}/${projId}/suites/${suiteId}`)
       .map(this.extractData);
   }
 
-  create(projectPayload): Observable<Project> {
-    let body = JSON.stringify(projectPayload);
+  create(projId: string, payload): Observable<Suite> {
+    let body = JSON.stringify(payload);
     let options = new RequestOptions({ headers: this.headers });
 
-    return this.http.post(this.projectsUrl, body, options)
+    return this.http.post(`${this.projectsUrl}/${projId}/suites`, body, options)
       .map(this.extractData);
   }
 
-  delete(id: string): Observable<Project> {
-    const selProjectUrl = `${this.projectsUrl}/${id}`;
+  update(projId: string, suiteId: string, payload): Observable<Suite> {
+    const selProjectUrl = `${this.projectsUrl}/${projId}/suites/${suiteId}`;
     console.log(selProjectUrl);
-    return this.http.delete(selProjectUrl, {headers: this.headers})
-      .map(this.extractData);
-  }
-
-  update(projectPayload, id): Observable<Project> {
-    const selProjectUrl = `${this.projectsUrl}/${id}`;
-    let body = JSON.stringify(projectPayload);
+    let body = JSON.stringify(payload);
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.put(selProjectUrl, body, options)
@@ -51,5 +45,4 @@ export class ProjectService {
     let body = res.json();
     return body || [{ }];
   }
-
 }

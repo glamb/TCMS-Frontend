@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Project }                from '../models/project.model';
 import { ProjectService }         from '../services/project.service';
-import { ProjectModelComponent }  from './project-modal.component';
+import { ProjectModalComponent }  from './project-modal.component';
+import { ApiService } from '../shared';
 
 @Component({
   selector: 'tcms-dash',
@@ -11,14 +12,17 @@ import { ProjectModelComponent }  from './project-modal.component';
   providers: [ ProjectService ]
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild(ProjectModelComponent) projectModal: ProjectModelComponent;
+  @ViewChild(ProjectModalComponent) projectModal: ProjectModalComponent;
   projects: Project[];
   errorMessage: string;
   selectedProject: Project;
 
 
   constructor(
-    private projectService: ProjectService) { }
+    private projectService: ProjectService,
+    private api: ApiService) {
+      api.title = 'Dashboard';
+    }
 
   addProject(newProject) {
     if (!newProject) { return; }
