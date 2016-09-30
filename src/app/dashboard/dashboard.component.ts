@@ -50,6 +50,15 @@ export class DashboardComponent implements OnInit {
       );
   }
 
+  deleteProject() {
+    this.projectService.delete(this.selectedProject._id)
+      .subscribe(
+        project => this.getProjects(),
+        error => this.errorMessage = <any>error
+      );
+  }
+
+
   onSelectProject(project: Project) {
     this.selectedProject = project;
   }

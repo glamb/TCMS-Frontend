@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
 
 import { Project } from '../models/project.model';
 
@@ -30,10 +31,15 @@ export class ProjectService {
       .map(this.extractData);
   }
 
-  update(projectPayload, id): Observable<Project> {
-    console.info('id: '+id);
+  delete(id: string): Observable<Project> {
     const selProjectUrl = `${this.projectsUrl}/${id}`;
     console.log(selProjectUrl);
+    return this.http.delete(selProjectUrl, {headers: this.headers})
+      .map(this.extractData);
+  }
+
+  update(projectPayload, id): Observable<Project> {
+    const selProjectUrl = `${this.projectsUrl}/${id}`;
     let body = JSON.stringify(projectPayload);
     let options = new RequestOptions({ headers: this.headers });
 
@@ -45,4 +51,5 @@ export class ProjectService {
     let body = res.json();
     return body || [{ }];
   }
+
 }
